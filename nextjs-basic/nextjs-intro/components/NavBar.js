@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from './NavBar.module.css';
+// import styles from './NavBar.module.css';
 
 export default function NavBar() {
   const router = useRouter();
@@ -8,24 +8,24 @@ export default function NavBar() {
   return (
     <nav>
       <Link href="/">
-        <span
-          className={`${styles.link} ${
-            router.pathname === '/' ? styles.active : ''
-          }`}
-        >
-          Home
-        </span>
+        <span className={router.pathname === '/' ? 'active' : ''}>Home</span>
       </Link>
       <Link href="/about">
-        <span
-          className={[
-            styles.link,
-            router.pathname === '/about' ? styles.active : '',
-          ].join(' ')}
-        >
+        <span className={router.pathname === '/about' ? 'active' : ''}>
           About
         </span>
       </Link>
+      <style jsx>{`
+        nav {
+          background-color: tomato;
+        }
+        span {
+          text-decoration: none;
+        }
+        .active {
+          color: yellow;
+        }
+      `}</style>
     </nav>
   );
 }
